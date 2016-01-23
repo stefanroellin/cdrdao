@@ -1,0 +1,25 @@
+From: Markus Koschany <apo@gambaru.de>
+Date: Tue, 29 Jan 2013 15:08:08 +0100
+Subject: create valid desktop file
+
+---
+ xdao/gcdmaster.desktop |    5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/xdao/gcdmaster.desktop b/xdao/gcdmaster.desktop
+index 7e46eb4..0a9de3a 100644
+--- a/xdao/gcdmaster.desktop
++++ b/xdao/gcdmaster.desktop
+@@ -1,10 +1,9 @@
+ [Desktop Entry]
+-Encoding=UTF-8
+ Name=Gnome CD Master
+ Comment=Gnome Audio CD editor and burner
+ Exec=gcdmaster %F
+-Icon=gcdmaster.png
++Icon=gcdmaster
+ Terminal=false
+ Type=Application
+ StartupNotify=true
+-Categories=GNOME;AudioVideo;Application;X-Fedora;
++Categories=GNOME;GTK;AudioVideo;

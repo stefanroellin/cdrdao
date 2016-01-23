@@ -1,0 +1,70 @@
+From: Markus Koschany <apo@gambaru.de>
+Date: Tue, 29 Jan 2013 13:29:04 +0100
+Subject: fix format not a string literal error
+
+---
+ pccts/antlr/fset2.c |    2 +-
+ pccts/antlr/gen.c   |    2 +-
+ pccts/antlr/lex.c   |    8 ++++----
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/pccts/antlr/fset2.c b/pccts/antlr/fset2.c
+index 5393a9e..5e017e5 100644
+--- a/pccts/antlr/fset2.c
++++ b/pccts/antlr/fset2.c
+@@ -2210,7 +2210,7 @@ void MR_backTraceReport()
+       if (p->ntype != nToken) continue;
+       tn=(TokNode *)p;
+       if (depth != 0) fprintf(stdout," ");
+-      fprintf(stdout,TerminalString(tn->token));
++      fprintf(stdout,"%s",TerminalString(tn->token));
+       depth++;
+       if (! MR_AmbAidMultiple) {
+         if (set_nil(tn->tset)) {
+diff --git a/pccts/antlr/gen.c b/pccts/antlr/gen.c
+index 7940eca..51a42fa 100644
+--- a/pccts/antlr/gen.c
++++ b/pccts/antlr/gen.c
+@@ -3866,7 +3866,7 @@ int file;
+ /* MR10 */    _gen(" *  ");
+ /* MR10 */    for (i=0 ; i < Save_argc ; i++) {
+ /* MR10 */      _gen(" ");
+-/* MR10 */      _gen(Save_argv[i]);
++/* MR10 */      _gen1("%s",Save_argv[i]);
+ /* MR10 */    };
+ 	_gen("\n");
+ 	_gen(" *\n");
+diff --git a/pccts/antlr/lex.c b/pccts/antlr/lex.c
+index 21fcc2e..63be01b 100644
+--- a/pccts/antlr/lex.c
++++ b/pccts/antlr/lex.c
+@@ -706,7 +706,7 @@ FILE *output;
+ /* MR26 */			if (! (isalpha(*t) || isdigit(*t) || *t == '_' || *t == '$')) break;
+ /* MR26 */		}
+ /* MR26 */	}
+-/* MR26 */	fprintf(output,strBetween(pSymbol, t, pSeparator));
++/* MR26 */	fprintf(output,"%s",strBetween(pSymbol, t, pSeparator));
+ 
+     *q = p;
+     return (*pSeparator  == 0);
+@@ -771,7 +771,7 @@ FILE *f;
+ 				  &pValue,
+ 				  &pSeparator,
+ 				  &nest);
+-	fprintf(f,strBetween(pDataType, pSymbol, pSeparator));
++	fprintf(f,"%s",strBetween(pDataType, pSymbol, pSeparator));
+ }
+ 
+ /* check to see if string e is a word in string s */
+@@ -852,9 +852,9 @@ int i;
+ 					  &pSeparator,
+ 					  &nest);
+ 		fprintf(f,"\t");
+-		fprintf(f,strBetween(pDataType, pSymbol, pSeparator));
++		fprintf(f,"%s",strBetween(pDataType, pSymbol, pSeparator));
+ 		fprintf(f," ");
+-		fprintf(f,strBetween(pSymbol, pEqualSign, pSeparator));
++		fprintf(f,"%s",strBetween(pSymbol, pEqualSign, pSeparator));
+ 		fprintf(f,";\n");
+     }
+ 	fprintf(f,"};\n");
