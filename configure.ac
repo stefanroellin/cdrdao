@@ -221,9 +221,7 @@ if test "$xdao" = yes; then
   en_xdao=yes
   PKG_CHECK_MODULES(SIGCPP2, sigc++-2.0 >= 2.0.0,[],
         [echo "Building of gcdmaster disabled"; en_xdao=no])
-  PKG_CHECK_MODULES(GTKMM2, gtkmm-2.4 >= 2.4.0,[],
-        [echo "Building of gcdmaster disabled"; en_xdao=no])
-  PKG_CHECK_MODULES(LIBGUIMM2, libgnomeuimm-2.6 >= 2.6.0,[],
+  PKG_CHECK_MODULES([GTKMM], [gtkmm-3.0], [],
         [echo "Building of gcdmaster disabled"; en_xdao=no])
 fi
 
@@ -393,6 +391,8 @@ AM_CONDITIONAL([COND_SCSILIB], [test "$en_scsilib" = yes])
 AM_CONDITIONAL([COND_PCCTS], [test "$en_pccts" = yes])
 AM_CONDITIONAL([COND_MP3], [test "$with_mp3_support" = yes])
 AM_CONDITIONAL([COND_OGG], [test "$with_ogg_support" = yes])
+
+GLIB_GSETTINGS
 
 AC_CONFIG_FILES([
         trackdb/Makefile

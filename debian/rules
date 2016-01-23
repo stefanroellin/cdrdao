@@ -12,8 +12,7 @@ override_dh_auto_configure:
 		--mandir=\$${prefix}/share/man \
 		--with-ogg-support \
 		--without-lame \
-		--without-scglib \
-		--without-xdao
+		--without-scglib
 
 override_dh_auto_install:
 	dh_auto_install --destdir=$(CURDIR)/debian/tmp

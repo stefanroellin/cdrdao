@@ -1,0 +1,3 @@
+- ? missing trigger to update during wav file is read
+- ? trigger redraw?
+
