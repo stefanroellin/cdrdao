@@ -1,0 +1,26 @@
+Author: Gert Wollny <gw.fossdev@gmail.com>
+Description: Fix compilation with gcc-6
+Bug-Debian: https://bugs.debian.org/811733
+
+--- a/dao/CdrDriver.cc
++++ b/dao/CdrDriver.cc
+@@ -496,7 +496,7 @@
+   0, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0
+ };
+ 
+-char CdrDriver::REMOTE_MSG_SYNC_[4] = { 0xff, 0x00, 0xff, 0x00 };
++unsigned char CdrDriver::REMOTE_MSG_SYNC_[4] = { 0xff, 0x00, 0xff, 0x00 };
+ 
+ 
+ /* Maps a string to the corresponding driver option value 
+--- a/dao/CdrDriver.h
++++ b/dao/CdrDriver.h
+@@ -440,7 +440,7 @@
+   bool fullBurn_;
+ 
+   static unsigned char syncPattern[12];
+-  static char REMOTE_MSG_SYNC_[4];
++  static unsigned char REMOTE_MSG_SYNC_[4];
+ 
+   static int speed2Mult(int);
+   static int mult2Speed(int);

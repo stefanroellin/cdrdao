@@ -10,7 +10,7 @@ Build-Depends:
  libcam-dev [kfreebsd-any],
  libgconf2-dev,
  libvorbis-dev
-Standards-Version: 3.9.4
+Standards-Version: 3.9.8
 Homepage: http://cdrdao.sourceforge.net/
 
 Package: cdrdao
