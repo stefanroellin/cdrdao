@@ -992,7 +992,7 @@ void SampleDisplay::drawTimeTick(const Cairo::RefPtr<Cairo::Context>& cr,
 {
   char buf[50];
 
-  if (pixmap_ == 0)
+  if (!pixmap_)
     return;
 
   unsigned long min = sample / (60 * 44100);
